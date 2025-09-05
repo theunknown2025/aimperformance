@@ -4,23 +4,10 @@
 
 [build.environment]
   NODE_VERSION = "18"
-  NEXT_PRIVATE_TARGET = "serverless"
 
 # Enable Next.js plugin for proper SSR support
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Handle Next.js App Router and API routes
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/nextjs"
-  status = 200
-
-# Handle all other routes for Next.js App Router
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/nextjs"
-  status = 200
 
 # Security headers
 [[headers]]

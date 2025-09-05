@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { authenticateUser } from '../../../lib/registrationService';
+import { AuthService } from '../../../lib/services/authService';
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,8 +13,8 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Authenticate user
-    const user = await authenticateUser(email, password);
+    // Authenticate user using service
+    const user = await AuthService.login({ email, password });
     
     if (!user) {
       return NextResponse.json(
@@ -28,10 +28,9 @@ export async function POST(request: NextRequest) {
       message: 'Connexion réussie',
       user: {
         id: user.id,
-        companyName: user.companyName,
-        representativeName: user.representativeName,
+        companyName: user.company_name,
+        representativeName: user.representative_name,
         email: user.email,
-        selectedEvent: user.selectedEvent,
         activities: user.activities
       }
     });
