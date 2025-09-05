@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
   },
   // Netlify-specific configuration
   trailingSlash: true,
-  // Ensure API routes work with Netlify Functions
+  // Ensure proper routing for Netlify
   async rewrites() {
     return {
       beforeFiles: [],
@@ -30,6 +30,8 @@ const nextConfig: NextConfig = {
       fallback: []
     };
   },
+  // Ensure proper asset handling
+  assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
 };
 
 export default nextConfig;

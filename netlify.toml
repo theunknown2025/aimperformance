@@ -10,13 +10,13 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Handle Next.js API routes
+# Handle Next.js App Router and API routes
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/nextjs"
   status = 200
 
-# Handle Next.js pages and app routes
+# Handle all other routes for Next.js App Router
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/nextjs"
@@ -33,7 +33,7 @@
 
 # Cache static assets
 [[headers]]
-  for = "/static/*"
+  for = "/_next/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
