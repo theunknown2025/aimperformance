@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  NEXT_PRIVATE_TARGET = "serverless"
 
 # Enable Next.js plugin for proper SSR support
 [[plugins]]
